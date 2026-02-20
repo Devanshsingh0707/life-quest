@@ -6,8 +6,3 @@ const api = axios.create({
 });
 
 export default api;
-```
-
-Then create `frontend/.env.production`:
-```
-REACT_APP_API_URL=https://life-quest-u6zi.onrender.com

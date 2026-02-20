@@ -20,50 +20,38 @@ export default function Dashboard() {
   }, []);
 
   const handleComplete = (data) => {
-    setQuests((prev) =>
-      prev.map((dq) =>
-        dq.questId?._id?.toString() === data.questId ||
-        dq.questId?._id === data.questId
-          ? { ...dq, completed: true }
-          : dq
-      )
-    );
+    setQuests(prev => prev.map(dq =>
+      dq.questId?._id?.toString() === data.questId || dq.questId?._id === data.questId
+        ? { ...dq, completed: true }
+        : dq
+    ));
     setStats({ xp: data.totalXp, level: data.level, streak: data.streak });
     updateUser({ xp: data.totalXp, level: data.level, streak: data.streak });
   };
 
   const today = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-  const allDone = quests.length > 0 && quests.every((q) => q.completed);
+  const allDone = quests.length > 0 && quests.every(q => q.completed);
+  const doneCount = quests.filter(q => q.completed).length;
 
   if (loading) return <div className="loading-screen"><div className="spinner" /></div>;
 
   return (
     <div className="dashboard">
       <div className="dashboard-header">
-        <h2>Today's Quests</h2>
-        <p>{today} · {quests.filter(q => q.completed).length}/{quests.length} completed</p>
+        <h2>Daily Quests</h2>
+        <p>{today} — {doneCount}/{quests.length} completed</p>
       </div>
 
       {allDone && (
-        <div style={{
-          background: 'rgba(74,222,128,0.1)',
-          border: '1px solid rgba(74,222,128,0.3)',
-          borderRadius: 14,
-          padding: '1rem 1.5rem',
-          marginBottom: '2rem',
-          textAlign: 'center',
-          fontFamily: 'Cinzel, serif',
-          color: '#4ade80',
-          fontSize: '1.1rem',
-        }}>
-          🏆 All quests completed! Come back tomorrow for new challenges.
+        <div className="all-done-banner">
+          All quests completed. Return tomorrow for new missions.
         </div>
       )}
 
       {quests.length === 0 ? (
         <div className="empty-state">
-          <h3>No quests today</h3>
-          <p>Something went wrong fetching your quests. Try refreshing.</p>
+          <h3>No quests assigned</h3>
+          <p>Try refreshing or logging out and back in.</p>
         </div>
       ) : (
         <div className="quests-grid">

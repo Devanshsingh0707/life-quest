@@ -20,15 +20,16 @@ export default function History() {
 
   return (
     <div className="history-page">
-      <h2>📜 Quest History</h2>
+      <h2>Quest History</h2>
+      <p className="history-subtitle">Past missions &amp; outcomes</p>
 
       {history.length === 0 ? (
         <div className="empty-state">
-          <h3>No history yet</h3>
-          <p>Complete quests to see your past adventures here.</p>
+          <h3>No records yet</h3>
+          <p>Complete quests to build your history.</p>
         </div>
       ) : (
-        history.map((day) => (
+        history.map(day => (
           <div key={day.date} className="history-day">
             <div className="history-date">{formatDate(day.date)}</div>
             <div className="history-quests">
@@ -40,10 +41,10 @@ export default function History() {
                     <span className="hist-icon">{quest.icon || '⚔️'}</span>
                     <div className="hist-info">
                       <div className="hist-title">{quest.title}</div>
-                      <div className="hist-cat">{quest.category} · {quest.difficulty} · ⭐ {quest.xp} XP</div>
+                      <div className="hist-cat">{quest.category} · {quest.difficulty} · {quest.xp} xp</div>
                     </div>
                     <span className={`hist-status ${q.completed ? 'done' : 'miss'}`}>
-                      {q.completed ? '✅ Done' : '❌ Missed'}
+                      {q.completed ? 'Completed' : 'Missed'}
                     </span>
                   </div>
                 );

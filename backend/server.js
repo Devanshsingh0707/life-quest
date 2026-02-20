@@ -2,8 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const cron = require('node-cron');
-require("dotenv").config();
-
+require('dotenv').config();
 
 const authRoutes = require('./routes/auth');
 const questRoutes = require('./routes/quests');
@@ -13,7 +12,13 @@ const { assignDailyQuests } = require('./controllers/questController');
 const app = express();
 
 // Middleware
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://life-quest-eta.vercel.app',
+  ],
+  credentials: true,
+}));
 app.use(express.json());
 
 // Routes

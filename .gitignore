@@ -1,0 +1,80 @@
+# ======================
+# Node Modules
+# ======================
+node_modules/
+**/node_modules/
+
+# ======================
+# Environment Variables
+# ======================
+.env
+.env.*
+!.env.example
+
+# ======================
+# Logs
+# ======================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ======================
+# Runtime Data
+# ======================
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ======================
+# Coverage
+# ======================
+coverage/
+
+# ======================
+# Build Folders
+# ======================
+build/
+dist/
+frontend/build/
+backend/build/
+
+# ======================
+# OS Files
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# IDE / Editor Files
+# ======================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ======================
+# Dependency Lock Files (optional)
+# ======================
+# Uncomment if you don't want lock files
+# package-lock.json
+# yarn.lock
+
+# ======================
+# Temporary Files
+# ======================
+tmp/
+temp/
+
+# ======================
+# MongoDB local files (if any)
+# ======================
+*.db
+*.sqlite
+
+# ======================
+# Misc
+# ======================
+.cache/
